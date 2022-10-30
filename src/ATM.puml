@@ -1,0 +1,108 @@
+@startuml
+class ATM {
+    - userAuthentication: Boolean
+}
+
+abstract class Transaction {
+    - accountNumber: Integer
+    - screen: Screen;
+    - bankDatabase: BankDatabase;
+
+    + Transaction((Integer accountNumber, Screen atmScreen, BankDatabase atmBankDatabase)
+    + getAccountNumber():Integer
+    + getScreen():Screen
+    + getBankDatabase():BankDatabase
+    + {abstract} execute()
+}
+
+class BalanceInquiry {
+    + execute()
+}
+
+class Withdrawal {
+    - amount: Integer
+    - keypad: Keypad
+    - cashDispenser: CashDispenser
+
+    + Withdrawal(Integer userAccountNumber, Screen atmScreen, BankDatabase atmBankDatabase, Keypad atmKeypad, CashDispenser atmCashDispenser)
+    + execute()
+    - displayMenuOfAmounts()
+}
+
+class Deposit {
+    - accountNumber: Integer
+    - amount: Double
+
+    +execute()
+}
+
+class BankDatabase {
+    - accounts: Account[0..*]
+    + BankDatabase()
+    - getAccount(Integer accountNumber): Account
+    + authenticateUser(Integer userAccountNumber, Integer userPIN): Boolean
+    + getAvailableBalance(Integer accountNumber): Double
+    + getTotalBalance(Integer accountNumber): Double
+    + credit(Integer userAccountNumber, Double amount)
+    + debit(Integer userAccountNumber, Double amount)
+}
+
+class Account {
+    - accountNumber: Integer
+    - pin: Integer
+    - availableBalance: Double
+    - totalBalance: Double
+
+    + Account(Integer accountNumber, Integer pin, Double availableBalance, Double totalBalance)
+    + validatePIN(Integer userPIN): Boolean
+    + getAvailableBalance(): Double
+    + getTotalBalance(): Double
+    + credit(Double amount)
+    + debit(Double amount)
+    + getAccountNumber(): Integer
+}
+
+class Screen {
+    + displayMessage(String message)
+    + displayMessageLine(String message)
+    + displayRupiahAmount(Double amount)
+}
+
+class Keypad {
+    - input: Scanner
+    + Keypad()
+    + getInput(): Integer
+}
+
+class CashDispenser {
+    - {static} INITIAL_COUNT: Integer = 500
+    - count: Integer
+
+    + CashDispenser()
+    + dispenseCash(Integer amount)
+    + isSufficientCashAvailable(Integer amount): Boolean
+}
+
+class DepositSlot {
+    + isEnvelopeReceived(): Boolean
+}
+
+Transaction <|-- BalanceInquiry
+Transaction <|-- Withdrawal
+Transaction <|-- Deposit
+
+ATM "1" *-- "1" Keypad
+ATM "1" *-- "1" DepositSlot
+ATM "1" *-- "1" CashDispenser
+ATM "1" *-- "1" Screen
+ATM "1" --> "0..1" Withdrawal : executes >
+Withdrawal "0..1" --> "1" Screen
+Withdrawal "0..1" --> "1" CashDispenser
+Withdrawal "0..1" --> "1" Keypad
+
+ATM "1" --> "1" BankDatabase: Authenticate User Agent >
+BankDatabase "1" -- "0..*" Account: Contains >
+Withdrawal "0..1" --> "1" BankDatabase: Access/modifies an account balancehrough >
+
+
+@enduml
