@@ -25,5 +25,9 @@ bin/
 ### VS Code ###
 .vscode/
 
+### IntelliJ Idea
+.idea
+ATMCaseStudy.iml
+
 ### Mac OS ###
 .DS_Store
