@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f48eda77-5320-4c29-8c27-957202b647c4" name="Changes" comment="first commit, kasus ATM">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f48eda77-5320-4c29-8c27-957202b647c4" name="Changes" comment="first commit, kasus ATM" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +64,7 @@
       <updated>1667147826776</updated>
       <workItem from="1667147827924" duration="626000" />
       <workItem from="1667148483492" duration="32000" />
-      <workItem from="1667154420170" duration="2039000" />
+      <workItem from="1667154420170" duration="2094000" />
     </task>
     <task id="LOCAL-00001" summary="first commit, kasus ATM">
       <created>1667155756147</created>
@@ -83,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667156154888</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="first commit, kasus ATM">
+      <created>1667156488275</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667156488275</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
